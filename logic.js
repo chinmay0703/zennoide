@@ -113,7 +113,7 @@ function createOrder() {
 
     if (discountA === 0 && discountB === 0 && discountC === 0 && discountD === 0) {
         discountedAmount = totalAmount;
-        mostBeneficialCoupon = '';
+        mostBeneficialCoupon = 'No coupn Applied';
     }
     else {
 
@@ -162,7 +162,7 @@ function createOrder() {
         orderContent += `<p>Shipping Fee: $${shippingFee.toFixed(2)}</p>`;
         orderContent += `<p>Total Amount to pay: $${(discountedAmount + giftWrapFee + shippingFee).toFixed(2)}</p>`;
     } else {
-        
+
         orderContent += `<p>Coupon Applied: ${mostBeneficialCoupon}</p>`;
         orderContent += `<p>Total Savings: ${totalAmount - discountedAmount}</p>`;
         orderContent += `<p>Gift Wrap Fee: $${giftWrapFee.toFixed(2)}</p>`;
