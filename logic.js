@@ -1,32 +1,33 @@
 // Array of the cart
 let cart = [];
+
 // globally declared to get the values from any function
 let totalQuantity = 0;
 let totalAmount = 0;
 
 function addToCart(productName, price, quantity, giftWrap) {
-    const existingItem = cart.find(item => item.name === productName);
-    if (existingItem) {
-        existingItem.quantity += parseInt(quantity);
-    } else {
-        cart.push({ name: productName, price: price, quantity: parseInt(quantity), giftWrap: giftWrap });
-    }
-    totalQuantity += parseInt(quantity);
-    updateCart();
+const existingItem = cart.find(item => item.name === productName);
+     if (existingItem) {
+         existingItem.quantity += parseInt(quantity);
+  } else {
+         cart.push({ name: productName, price: price, quantity: parseInt(quantity), giftWrap: giftWrap });
+    } 
+totalQuantity += parseInt(quantity);
+     updateCart();
+} 
+
+ function submitQuantities() {
+   // to get the quantity and gift wrap info from the user
+     addToCart('Product A', 20, document.getElementById('quantityA').value, document.getElementById ('giftWrapA').checked);
+     addToCart('Product B', 40, document.getElementById('quantityB').value, document.getElementById('giftWrapB').checked);
+    addToCart('Product C', 50, document.getElementById('quantityC').value, document.getElementById('giftWrapC').checked) ;
 }
 
-function submitQuantities() {
-    // to get the quantity and gift wrap info from the user
-    addToCart('Product A', 20, document.getElementById('quantityA').value, document.getElementById('giftWrapA').checked);
-    addToCart('Product B', 40, document.getElementById('quantityB').value, document.getElementById('giftWrapB').checked);
-    addToCart('Product C', 50, document.getElementById('quantityC').value, document.getElementById('giftWrapC').checked);
-}
-
-function updateCart() {
+function updateCart()  {
     // to print the necessary things
-    const cartContent = document.getElementById('cart-content');
+    const cartContent =  document.getElementById('cart-content');
     const totalQuantityElement = document.getElementById('total-quantity');
-    const totalAmountElement = document.getElementById('total-amount');
+    const totalAmountElement =  document.getElementById('total-amount');
 
     cartContent.innerHTML = '';
     totalAmount = 0;
@@ -46,7 +47,6 @@ function updateCart() {
             totalAmount += item.price * item.quantity;
         });
     }
-
     totalQuantityElement.innerHTML = `<p>Total Quantity: ${totalQuantity}</p>`;
     totalAmountElement.innerHTML = `<p>Total Amount: $${totalAmount.toFixed(2)}</p>`;
     createOrder();
@@ -84,7 +84,7 @@ function createOrder() {
         discountA = 10;
     }
 
-    console.log('Discount A: flat_10_discount ', discountA);
+    console.log('Discount A  flat_10_discount ', discountA);
 
     // discountD calculation
     cart.forEach(item => {
@@ -93,7 +93,7 @@ function createOrder() {
         }
     });
 
-    console.log('Discount D:tiered_50_discount', discountD);
+    console.log('Discount D tiered_50_discount', discountD);
 
     // discountB calculation
     cart.forEach(item => {
@@ -102,14 +102,14 @@ function createOrder() {
         }
     });
 
-    console.log('Discount B: bulk_5_discount', discountB);
+    console.log('Discount B bulk_5_discount', discountB);
 
     // discountC calculation
     if (totalQuantity > 20) {
         discountC = totalAmount * 0.1;
     }
 
-    console.log('Discount C:bulk_10_discount', discountC);
+    console.log('Discount C bulk_10_discount', discountC);
 
     if (discountA === 0 && discountB === 0 && discountC === 0 && discountD === 0) {
         discountedAmount = totalAmount;
@@ -143,21 +143,26 @@ function createOrder() {
         if (item.giftWrap) {
             giftWrapFee += item.quantity;
         }
+
     });
+
     giftWrapFee *= 1; // Gift wrap fee: $1 per unit
 
     // Calculate shipping fee
     let shippingFee = Math.ceil(totalQuantity / 10) * 5;
     console.log('Discounted Amount:', discountedAmount);
+
     let orderContent = '';
 
     if (discountedAmount == totalAmount) {
         orderContent += `<p>Coupon Applied: ${mostBeneficialCoupon}</p>`;
         orderContent += `<p>Total Savings: ${totalAmount - discountedAmount}</p>`;
         orderContent += `<p>Gift Wrap Fee: $${giftWrapFee.toFixed(2)}</p>`;
+
         orderContent += `<p>Shipping Fee: $${shippingFee.toFixed(2)}</p>`;
         orderContent += `<p>Total Amount to pay: $${(discountedAmount + giftWrapFee + shippingFee).toFixed(2)}</p>`;
     } else {
+        
         orderContent += `<p>Coupon Applied: ${mostBeneficialCoupon}</p>`;
         orderContent += `<p>Total Savings: ${totalAmount - discountedAmount}</p>`;
         orderContent += `<p>Gift Wrap Fee: $${giftWrapFee.toFixed(2)}</p>`;
