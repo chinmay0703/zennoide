@@ -16,11 +16,15 @@ totalQuantity += parseInt(quantity);
      updateCart();
 } 
 
- function submitQuantities() {
-   // to get the quantity and gift wrap info from the user
-     addToCart('Product A', 20, document.getElementById('quantityA').value, document.getElementById ('giftWrapA').checked);
-     addToCart('Product B', 40, document.getElementById('quantityB').value, document.getElementById('giftWrapB').checked);
-    addToCart('Product C', 50, document.getElementById('quantityC').value, document.getElementById('giftWrapC').checked) ;
+function submitQuantities() {
+    // Get the quantity and gift wrap info from the user
+    let quantityA = document.getElementById('quantityA').value || 0;
+    let quantityB = document.getElementById('quantityB').value || 0;
+    let quantityC = document.getElementById('quantityC').value || 0;
+
+    addToCart('Product A', 20, quantityA, document.getElementById('giftWrapA').checked);
+    addToCart('Product B', 40, quantityB, document.getElementById('giftWrapB').checked);
+    addToCart('Product C', 50, quantityC, document.getElementById('giftWrapC').checked);
 }
 
 function updateCart()  {
@@ -31,7 +35,7 @@ function updateCart()  {
 
     cartContent.innerHTML = '';
     totalAmount = 0;
-
+console.log(cart.length);
     if (cart.length === 0) {
         cartContent.innerHTML = '<p>Your cart is empty.</p>';
     } else {
@@ -158,7 +162,6 @@ function createOrder() {
         orderContent += `<p>Coupon Applied: ${mostBeneficialCoupon}</p>`;
         orderContent += `<p>Total Savings: ${totalAmount - discountedAmount}</p>`;
         orderContent += `<p>Gift Wrap Fee: $${giftWrapFee.toFixed(2)}</p>`;
-
         orderContent += `<p>Shipping Fee: $${shippingFee.toFixed(2)}</p>`;
         orderContent += `<p>Total Amount to pay: $${(discountedAmount + giftWrapFee + shippingFee).toFixed(2)}</p>`;
     } else {
