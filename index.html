@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zennode</title>
+    <script src="./logic.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <div class="product">
+                <h2>Product A</h2>
+                <p>Price: $20</p>
+                <input type="number" id="quantityA" placeholder="Quantity" min="0">
+                <label>
+                    Gift Wrap
+                    <input type="checkbox" id="giftWrapA">
+                </label>
+            </div>
+            <div class="product">
+                <h2>Product B</h2>
+                <p>Price: $40</p>
+                <input type="number" id="quantityB" placeholder="Quantity" min="0">
+                <label>
+                    Gift Wrap
+                    <input type="checkbox" id="giftWrapB">
+                </label>
+            </div>
+            <div class="product">
+                <h2>Product C</h2>
+                <p>Price: $50</p>
+                <input type="number" id="quantityC" placeholder="Quantity" min="0">
+                <label>
+                    Gift Wrap
+                    <input type="checkbox" id="giftWrapC">
+                </label>
+            </div>
+            <div class="product">
+                <button onclick="submitQuantities()">Submit</button>
+            </div>
+        </div>
+        <div>
+            <h1>Cart</h1>
+            <div id="cart-content">
+            </div>
+            <div id="total-quantity">
+            </div>
+            <div id="total-amount">
+            </div>
+            <div id="order-details">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
