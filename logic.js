@@ -84,7 +84,7 @@ function createOrder() {
         discountA = 10;
     }
 
-    console.log('Discount A:', discountA);
+    console.log('Discount A: flat_10_discount ', discountA);
 
     // discountD calculation
     cart.forEach(item => {
@@ -93,7 +93,7 @@ function createOrder() {
         }
     });
 
-    console.log('Discount D:', discountD);
+    console.log('Discount D:tiered_50_discount', discountD);
 
     // discountB calculation
     cart.forEach(item => {
@@ -102,14 +102,14 @@ function createOrder() {
         }
     });
 
-    console.log('Discount B:', discountB);
+    console.log('Discount B: bulk_5_discount', discountB);
 
     // discountC calculation
     if (totalQuantity > 20) {
         discountC = totalAmount * 0.1;
     }
 
-    console.log('Discount C:', discountC);
+    console.log('Discount C:bulk_10_discount', discountC);
 
     if (discountA === 0 && discountB === 0 && discountC === 0 && discountD === 0) {
         discountedAmount = totalAmount;
