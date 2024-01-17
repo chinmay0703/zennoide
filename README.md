@@ -4,10 +4,18 @@ Live Link:[Task1](https://zennoide.vercel.app/)
 
 ##  tast1 Getting Started
 
+
 ### Installation
 1. Clone the repository to your local machine.
    ```bash
    git clone https://github.com/chinmay0703/zennode.git
+
+## Platform used
+JAVASCRIPT,HTML,CSS
+
+## Hosting platform
+
+Vercel
 
 ## Usage
 Open the index.html file in a web browser.
